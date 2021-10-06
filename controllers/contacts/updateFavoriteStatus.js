@@ -3,10 +3,14 @@ const { Contact } = require("../../models");
 const { sendSuccessResponse } = require("../../utils");
 
 const updateFavoriteStatus = async (req, res) => {
+  const { _id } = req.user;
   const { contactId } = req.params;
   const { favorite } = req.body;
-  const contact = await Contact.findByIdAndUpdate(
-    contactId,
+  const contact = await Contact.findOneAndUpdate(
+    {
+      _id: contactId,
+      owner: _id,
+    },
     { favorite },
     { new: true }
   );
