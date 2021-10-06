@@ -3,6 +3,7 @@ const { Unauthorized } = require("http-errors");
 const { User } = require("../models");
 
 require("dotenv").config();
+
 const { SECRET_KEY } = process.env;
 
 const authenticate = async (req, res, next) => {
