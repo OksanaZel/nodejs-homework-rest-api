@@ -33,7 +33,17 @@ const userSchema = Schema(
       type: String,
       default: null,
     },
-    avatarUrl: { type: String },
+    avatarUrl: {
+      type: String,
+    },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verifyToken: {
+      type: String,
+      required: [true, "Verify token is required"],
+    },
   },
   { versionKey: false, timestamps: true }
 );
@@ -56,6 +66,10 @@ userSchema.methods.createToken = function () {
 
 userSchema.methods.setAvatar = function (avatar) {
   this.avatarUrl = avatar;
+};
+
+userSchema.methods.setVerifyToken = function (verifyToken) {
+  this.verifyToken = verifyToken;
 };
 
 const userSchemaJoi = Joi.object({
