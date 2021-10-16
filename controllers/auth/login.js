@@ -1,5 +1,5 @@
 const { User } = require("../../models");
-const { Unauthorized } = require("http-errors");
+const { BadRequest, Unauthorized } = require("http-errors");
 const { sendSuccessResponse } = require("../../utils");
 
 const login = async (req, res) => {
@@ -8,6 +8,10 @@ const login = async (req, res) => {
 
   if (!user || !user.comparePassword(password)) {
     throw new Unauthorized("Email or password is wrong");
+  }
+
+  if (!user.verify) {
+    throw new BadRequest("Email is not verify");
   }
 
   const token = user.createToken();
