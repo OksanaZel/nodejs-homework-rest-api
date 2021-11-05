@@ -33,9 +33,9 @@ const userSchema = Schema(
       type: String,
       default: null,
     },
-    avatarUrl: {
-      type: String,
-    },
+    // avatarUrl: {
+    //   type: String,
+    // },
     verify: {
       type: Boolean,
       default: false,
@@ -64,9 +64,9 @@ userSchema.methods.createToken = function () {
   return jwt.sign(payload, SECRET_KEY);
 };
 
-userSchema.methods.setAvatar = function (avatar) {
-  this.avatarUrl = avatar;
-};
+// userSchema.methods.setAvatar = function (avatar) {
+//   this.avatarUrl = avatar;
+// };
 
 userSchema.methods.setVerifyToken = function (verifyToken) {
   this.verifyToken = verifyToken;

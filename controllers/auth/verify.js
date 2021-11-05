@@ -5,6 +5,7 @@ const { sendSuccessResponse } = require("../../utils");
 const verify = async (req, res) => {
   const { verifyToken } = req.params;
   const user = await User.findOne({ verifyToken });
+  // console.log(user);
   if (!user) {
     throw new NotFound("User not found");
   }
