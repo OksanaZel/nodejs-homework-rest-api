@@ -1,7 +1,7 @@
 const { User } = require("../../models");
 const { Conflict } = require("http-errors");
 const { nanoid } = require("nanoid");
-const gravatar = require("gravatar");
+// const gravatar = require("gravatar");
 const { sendEmail, sendSuccessResponse } = require("../../utils");
 
 const signup = async (req, res) => {
@@ -14,7 +14,7 @@ const signup = async (req, res) => {
   const newUser = new User({ email });
   newUser.setVerifyToken(nanoid(10));
   newUser.setPassword(password);
-  newUser.setAvatar(gravatar.url(email));
+  // newUser.setAvatar(gravatar.url(email));
 
   const { subscription, verifyToken } = await newUser.save();
 

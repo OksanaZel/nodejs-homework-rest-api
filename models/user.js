@@ -80,7 +80,7 @@ const userSchemaJoi = Joi.object({
     )
     .required(),
   email: Joi.string().email().required(),
-  subscription: Joi.string(),
+  // subscription: Joi.string(),
 });
 
 const User = model("user", userSchema);
